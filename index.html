@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Consulting Now | Diagnóstico Empresarial Presencial</title>
-<meta name="description" content="A Consulting Now entra na rotina da empresa para encontrar gargalos de caixa, margem, processos e gestão, e acompanha a implantação com o seu time.">
+<meta name="description" content="A Consulting Now ajuda a sua empresa a criar uma nova rotina de gestão: encontra gargalos de caixa, margem, processos e gestão, e acompanha a implantação com o seu time.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -212,13 +212,29 @@ section{padding:var(--sp-90) 0}
   linear-gradient(180deg, rgba(6,9,28,.9), rgba(6,9,28,.84)), /* overlay pesado: foto vira textura humana */
   url(assets/img/especialista-contato-bg.jpg) center 30%/cover no-repeat;
   background-attachment:scroll,fixed} /* fixed = parallax; iOS degrada p/ scroll normal */
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24)}
-.quote{background:var(--glass);border:1px solid var(--line);border-radius:var(--r-2);padding:var(--sp-32);box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:var(--sp-20)}
+.quotes-carousel{position:relative}
+.quotes{display:flex;gap:var(--sp-24);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:var(--sp-4) var(--sp-4) var(--sp-12);margin:calc(var(--sp-4)*-1);-ms-overflow-style:none;scrollbar-width:none}
+.quotes::-webkit-scrollbar{display:none}
+.quote{flex:0 0 calc(40% - var(--sp-16));scroll-snap-align:start;
+  /* glass quase nulo: véu mínimo + borda tênue, sem fill sólido */
+  background:rgba(255,255,255,.012);border:1px solid rgba(112,135,219,.13);border-radius:var(--r-2);
+  padding:var(--sp-32);box-shadow:none;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  display:flex;flex-direction:column;gap:var(--sp-20)}
 .quote blockquote{font-size:var(--fs-0);line-height:1.4;color:var(--blue-81)}
-.quote footer{display:flex;align-items:center;gap:var(--sp-12)}
-.avatar{flex:none;width:40px;height:40px;border-radius:var(--r-pill);background:var(--blue-22);color:var(--blue-92);font-family:var(--font-display);font-weight:700;font-size:var(--fs--1);display:flex;align-items:center;justify-content:center}
+.quote footer{display:flex;align-items:center;gap:var(--sp-12);margin-top:auto}
+.avatar{flex:none;width:44px;height:44px;border-radius:var(--r-pill);background:var(--blue-22);color:var(--blue-92);font-family:var(--font-display);font-weight:700;font-size:var(--fs--1);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.avatar-pair{flex:none;display:flex}
+.avatar-pair .avatar+.avatar{margin-left:-12px;border:2px solid var(--blue-16)}
 .quote cite{font-style:normal;font-size:var(--fs--1);color:var(--blue-72)}
 .quote cite b{display:block;color:var(--blue-97);font-weight:600}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:var(--sp-20);margin-top:var(--sp-32)}
+.car-btn{flex:none;width:44px;height:44px;border-radius:var(--r-pill);background:var(--glass);border:1px solid var(--line);color:var(--blue-92);font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s,opacity .2s}
+.car-btn:hover:not(:disabled){background:rgba(255,255,255,.07);border-color:var(--blue-48);color:var(--blue-97)}
+.car-btn:disabled{opacity:.3;cursor:default}
+.carousel-dots{display:flex;align-items:center;gap:var(--sp-8)}
+.dot-btn{width:8px;height:8px;padding:0;border:none;border-radius:var(--r-pill);background:var(--blue-35);opacity:.4;cursor:pointer;transition:opacity .25s,width .25s,background .25s}
+.dot-btn.active{opacity:1;width:24px;background:var(--blue-60)}
 
 /* ===== Diagnóstico / Form ===== */
 #diagnostico{background:
@@ -294,6 +310,7 @@ section{padding:var(--sp-90) 0}
   .stat strong{font-size:var(--fs-6)}
   .steps{grid-template-columns:repeat(2,1fr)}
   .sintomas{grid-template-columns:repeat(2,1fr)}
+  .quote{flex-basis:calc(58% - var(--sp-12))}
 }
 @media (max-width:809px){
   section{padding:var(--sp-60) 0}
@@ -304,7 +321,8 @@ section{padding:var(--sp-90) 0}
   .brand small{display:none}
   .site-header .btn{padding:var(--sp-8) var(--sp-16)}
   .hero-badges{flex-wrap:wrap}
-  .stats,.steps,.sintomas,.personas,.quotes,.compare,.diagnostico-grid,.split-head{grid-template-columns:1fr}
+  .stats,.steps,.sintomas,.personas,.compare,.diagnostico-grid,.split-head{grid-template-columns:1fr}
+  .quote{flex-basis:88%}
   .form-grid{grid-template-columns:1fr}
   .stat strong{font-size:var(--fs-6)}
 }
@@ -337,7 +355,7 @@ section{padding:var(--sp-90) 0}
       <span class="chip">700+ empresas reestruturadas</span>
     </div>
     <h1 class="reveal">Cresceu no faturamento. Agora precisa voltar a lucrar.</h1>
-    <p class="lead reveal">A Consulting Now entra na rotina da empresa para encontrar gargalos de caixa, margem, processos e gestão, e acompanha a implantação com o seu time.</p>
+    <p class="lead reveal">A Consulting Now ajuda a sua empresa a criar uma nova rotina de gestão: encontra gargalos de caixa, margem, processos e gestão, e acompanha a implantação com o seu time.</p>
     <div class="reveal">
       <a class="btn btn-primary" href="#diagnostico">Quero meu diagnóstico</a>
       <p class="micro">Sem compromisso. Um consultor entra em contato em até 24h.</p>
@@ -348,7 +366,7 @@ section{padding:var(--sp-90) 0}
 <!-- 2. PROVA QUANTITATIVA -->
 <section class="milestones">
   <div class="container">
-    <p class="intro reveal">Metodologia construída para empresas que já têm operação, equipe e complexidade, mas precisam transformar crescimento em margem, caixa e rotina de gestão.</p>
+    <p class="intro reveal">Metodologia construída para empresas que já têm estrutura, equipe e desafios na operação, mas precisam transformar crescimento em margem, caixa e rotina de gestão.</p>
     <div class="stats">
       <div class="stat reveal"><strong>32 anos</strong><span>de método aplicado</span></div>
       <div class="stat reveal"><strong>700+</strong><span>empresas reestruturadas</span></div>
@@ -373,7 +391,7 @@ section{padding:var(--sp-90) 0}
       <div class="sintoma reveal"><span class="dot"></span>Decisões importantes ainda dependem do dono.</div>
       <div class="sintoma reveal"><span class="dot"></span>A empresa quer expandir, mas a base operacional não sustenta.</div>
     </div>
-    <p class="problema-fecho reveal">Quando esses sinais aparecem juntos, o problema raramente é esforço. É estrutura. E estrutura se corrige com diagnóstico, prioridade e acompanhamento dentro da operação.</p>
+    <p class="problema-fecho reveal">Quando esses sinais aparecem juntos, o problema raramente é esforço. É estrutura. E estrutura se corrige com diagnóstico, planejamento, projeto exequível e acompanhamento dentro da operação.</p>
   </div>
 </section>
 
@@ -384,7 +402,7 @@ section{padding:var(--sp-90) 0}
       <div class="section-head reveal">
         <p class="eyebrow">Diferencial</p>
         <h2>Não é um relatório. É implantação assistida.</h2>
-        <p>A Consulting Now não olha a empresa de fora para entregar uma lista de problemas. O consultor entra na rotina, prioriza o que gera impacto e acompanha o avanço com o seu time.</p>
+        <p>A Consulting Now não olha a empresa de fora para entregar uma lista de problemas. O consultor ajuda a criar uma nova rotina de gestão, prioriza o que gera impacto e acompanha o avanço com o seu time.</p>
       </div>
       <div class="photo reveal"><img src="assets/img/consultor-analise.jpg" alt="Consultor analisando os números da operação" loading="lazy"></div>
     </div>
@@ -410,7 +428,7 @@ section{padding:var(--sp-90) 0}
         </ul>
       </div>
     </div>
-    <p class="diferencial-fecho reveal">É consultoria com corresponsabilidade: diagnóstico, plano e presença semanal para fazer a mudança sair do papel.</p>
+    <p class="diferencial-fecho reveal">É consultoria com corresponsabilidade: diagnóstico, planejamento, projeto exequível e presença semanal para fazer a mudança sair do papel.</p>
   </div>
 </section>
 
@@ -486,18 +504,37 @@ section{padding:var(--sp-90) 0}
       <p class="eyebrow">Prova social</p>
       <h2>Veja o que nossos clientes estão dizendo.</h2>
     </div>
-    <div class="quotes">
-      <div class="quote reveal">
-        <blockquote>“A Consulting Now é uma empresa excepcional, com uma equipe acolhedora e dedicada. O Bruno Fioravante se destaca como um profissional incrível, sempre trazendo soluções criativas e eficazes. A ética e a transparência nas relações comerciais tornam a parceria ainda mais gratificante.”</blockquote>
-        <footer><span class="avatar">BV</span><cite><b>Beatriz Vital</b>Cliente Consulting Now</cite></footer>
+    <div class="quotes-carousel reveal" data-carousel>
+      <div class="quotes" data-track>
+        <div class="quote">
+          <blockquote>“A Consulting Now foi fundamental na reorganização da nossa empresa. Além das soluções assertivas que alavancaram nossas vendas, agora temos uma visão mais ampla e efetiva do nosso negócio para tomada de decisões.”</blockquote>
+          <footer><span class="avatar-pair"><span class="avatar"><img src="assets/img/depoimentos/yago-baptista.jpg" alt="Yago Baptista" loading="lazy"></span><span class="avatar"><img src="assets/img/depoimentos/altair-baptista.jpg" alt="Altair Baptista" loading="lazy"></span></span><cite><b>Yago e Altair Baptista</b>Sócios · Alper Embalagens</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“Hoje, ao ver o quanto crescemos nesse ano de consultoria, só podemos dizer obrigado por nos mostrarem a direção e o caminho para esta conquista.”</blockquote>
+          <footer><span class="avatar"><img src="assets/img/depoimentos/josenildo-francelino.jpg" alt="Josenildo Francelino" loading="lazy"></span><cite><b>Josenildo Francelino</b>Sócio Diretor · Confiance Empilhadeiras</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“O diagnóstico nos deu uma visão independente e organizada sobre a estrutura financeira, operacional e comercial na nossa empresa. Bem como, nos apresentou o caminho das ações necessárias para aumentar a lucratividade.”</blockquote>
+          <footer><span class="avatar-pair"><span class="avatar"><img src="assets/img/depoimentos/fabio-franco.jpg" alt="Fabio Franco" loading="lazy"></span><span class="avatar"><img src="assets/img/depoimentos/elisa-franco.jpg" alt="Elisa Franco" loading="lazy"></span></span><cite><b>Fabio e Elisa Franco</b>Diretores · EB Alumínio</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“O diagnóstico apresentado pela Consulting Now, utilizando técnicas modernas de avaliação, foi importante ao detectar pontos positivos e oportunidades de melhoria para continuar no desenvolvimento da nossa empresa para as próximas décadas.”</blockquote>
+          <footer><span class="avatar"><img src="assets/img/depoimentos/nelson-okadi.jpg" alt="Nelson Tetsuo Okadi" loading="lazy"></span><cite><b>Nelson Tetsuo Okadi</b>Diretor Técnico · Enequipa</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“O diagnóstico da Consulting Now promoveu o entendimento da necessidade de reorganização de capital humano e da implantação de processos para que a empresa funcionasse de forma organizada, fornecendo melhor atendimento aos clientes, melhor ambiente de trabalho e lucratividade.”</blockquote>
+          <footer><span class="avatar"><img src="assets/img/depoimentos/leticia-tirtaprawita.jpg" alt="Leticia Tirtaprawita" loading="lazy"></span><cite><b>Leticia Tirtaprawita</b>Diretora · Ferragens Mundial</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“A Consulting Now nos apresentou uma proposta de diagnóstico seguida de um plano para ajuste e correção das rotas. Ficamos muito felizes com o resultado e recomendamos a todos que necessitem de uma atualização nas modernas práticas de gestão.”</blockquote>
+          <footer><span class="avatar"><img src="assets/img/depoimentos/ricardo-martins.jpg" alt="Ricardo Martins" loading="lazy"></span><cite><b>Ricardo Martins</b>Diretor · Grampofix</cite></footer>
+        </div>
       </div>
-      <div class="quote reveal">
-        <blockquote>“A Consulting Now tem uma metodologia de trabalho eficiente, identifica os pontos de melhoria e trabalha junto com as equipes. Recomendo. O trabalho traz resultados.”</blockquote>
-        <footer><span class="avatar">RM</span><cite><b>Rodrigo Marinho</b>Cliente Consulting Now</cite></footer>
-      </div>
-      <div class="quote reveal">
-        <blockquote>“Excelente atendimento e clareza em todas as etapas. O que foi prometido foi entregue dentro do prazo e com qualidade acima da média. Transmite segurança.”</blockquote>
-        <footer><span class="avatar">HS</span><cite><b>Higor Silva</b>Cliente Consulting Now</cite></footer>
+      <div class="carousel-nav">
+        <button class="car-btn" type="button" data-prev aria-label="Depoimento anterior">‹</button>
+        <div class="carousel-dots" data-dots role="tablist" aria-label="Selecionar depoimento"></div>
+        <button class="car-btn" type="button" data-next aria-label="Próximo depoimento">›</button>
       </div>
     </div>
   </div>
@@ -508,7 +545,7 @@ section{padding:var(--sp-90) 0}
   <div class="container">
     <div class="diagnostico-grid">
       <div class="reveal">
-        <p class="eyebrow">Diagnóstico gratuito</p>
+        <p class="eyebrow">Conversa inicial gratuita</p>
         <h2>Comece pelo diagnóstico.</h2>
         <p style="margin-top:var(--sp-16);font-size:var(--fs-1)">Um especialista entra em contato em até 24 horas para entender o cenário e indicar o próximo passo.</p>
         <div class="garantias">
@@ -540,7 +577,7 @@ section{padding:var(--sp-90) 0}
           </div>
           <div class="field full"><label for="mensagem">Mensagem</label><textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte um pouco do cenário (opcional)"></textarea></div>
         </div>
-        <button class="btn btn-primary" type="submit">Quero meu diagnóstico gratuito</button>
+        <button class="btn btn-primary" type="submit">Quero meu diagnóstico</button>
         <p class="micro">Ao enviar, você concorda em receber contato da Consulting Now pelo número informado. Sem spam. Retorno em até 24 horas.</p>
       </form>
     </div>
@@ -570,7 +607,7 @@ section{padding:var(--sp-90) 0}
       </div>
       <div class="faq-item reveal">
         <button class="faq-question" aria-expanded="false">O consultor conhece o meu setor?<span class="icon">+</span></button>
-        <div class="faq-answer"><p>Em 32 anos já atendemos os mais diversos segmentos da indústria, comércio e serviço, tais como redes de clínicas, supermercados, fábricas moveleiras, construtoras e franquias entre muitos outros. Se a empresa tem 15 ou mais funcionários e desafios de gestão, o método se adapta.</p></div>
+        <div class="faq-answer"><p>Em 32 anos já atendemos os mais diversos segmentos da indústria, comércio e serviço, tais como redes de clínicas, supermercados, fábricas moveleiras, construtoras e franquias entre muitos outros. Atuamos com consultoria de gestão e processos, que se aplica a todo e qualquer tipo de empresa — diferente de uma consultoria por especialidade, que atua em nichos específicos. Se a empresa tem 15 ou mais funcionários e desafios de gestão, o método se adapta.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-question" aria-expanded="false">O que acontece depois do diagnóstico?<span class="icon">+</span></button>
@@ -627,6 +664,47 @@ document.querySelectorAll('.faq-question').forEach((button) => {
       button.setAttribute('aria-expanded', 'true');
     }
   });
+});
+
+document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+  const track = carousel.querySelector('[data-track]');
+  const cards = Array.from(track.children);
+  const dotsBox = carousel.querySelector('[data-dots]');
+  const prev = carousel.querySelector('[data-prev]');
+  const next = carousel.querySelector('[data-next]');
+  if (!track || !cards.length) return;
+
+  const step = () => cards[0].offsetWidth + parseFloat(getComputedStyle(track).columnGap || 0);
+  const activeIndex = () => Math.round(track.scrollLeft / step());
+
+  const dots = cards.map((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'dot-btn';
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', `Depoimento ${i + 1}`);
+    dot.addEventListener('click', () => track.scrollTo({ left: i * step(), behavior: 'smooth' }));
+    dotsBox.appendChild(dot);
+    return dot;
+  });
+
+  const sync = () => {
+    const i = activeIndex();
+    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === i));
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+  };
+
+  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+
+  let raf;
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(sync);
+  });
+  window.addEventListener('resize', sync);
+  sync();
 });
 </script>
 </body>
