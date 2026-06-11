@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulting Now | Diagnóstico Empresarial Presencial</title>
+<meta name="description" content="A Consulting Now ajuda a sua empresa a criar uma nova rotina de gestão: encontra gargalos de caixa, margem, processos e gestão, e acompanha a implantação com o seu time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN DNA — Rescale aplicado à marca Consulting Now
+   Fonte: Design/dna/rescale/design-dna.json
+   Matiz da marca: 227° (#2048D4 = L48, #05154E = L16)
+   ============================================================ */
+:root{
+  /* Ramp azul 227° — DARK THEME (alinhado aos KVs): luminosidade invertida */
+  --blue-5:#06091C;   /* fundo base */
+  --blue-10:#0B1228;  /* fundo alternado */
+  --blue-16:#05154E;  /* brand navy — superfícies */
+  --blue-22:#11225F;  /* superfície elevada */
+  --blue-35:#1F3893;  /* decorativos (números, bordas fortes) */
+  --blue-48:#2048D4;  /* brand blue — ação */
+  --blue-60:#4D6CF0;  /* acento vivo — eyebrows/ícones (puxado ao brand blue, legível em 13px) */
+  --blue-65:#7087DB;  /* periwinkle — glow, fim do gradiente */
+  --blue-72:#8299ED;  /* eyebrow, links, acentos de texto */
+  --blue-81:#ADBBF0;  /* body text (nunca branco puro) */
+  --blue-92:#DBE2FA;  /* texto secundário forte */
+  --blue-97:#F2F5FE;  /* ink — headlines */
+  --white:#ffffff;
+  --line:rgba(112,135,219,.28);  /* bordas finas azuladas (assinatura dos KVs) */
+  --glass:rgba(255,255,255,.045);/* superfícies vidro */
+  /* micro-acentos (nunca fundo de seção, nunca texto corrido) */
+  --ok:#18e071; --danger:#ff7a72; --whats:#25d366;
+
+  /* Escala tipográfica 16 × 1.2^n, par */
+  --fs--1:13px; --fs-0:16px; --fs-1:20px; --fs-2:24px;
+  --fs-4:32px; --fs-5:40px; --fs-6:48px; --fs-7:56px; --fs-9:80px;
+
+  /* Grid de espaçamento 4px: +4 até 24, depois +8; seções 60–90 */
+  --sp-4:4px; --sp-8:8px; --sp-12:12px; --sp-16:16px; --sp-20:20px;
+  --sp-24:24px; --sp-32:32px; --sp-40:40px; --sp-60:60px; --sp-90:90px;
+
+  /* Radius linear +10; CTAs/chips em r-1 (decisão dos KVs, não pill) */
+  --r-1:10px; --r-2:20px; --r-3:30px; --r-pill:999px;
+
+  /* Movimento */
+  --t-fast:150ms; --t-def:200ms;
+  --ease-entrance:cubic-bezier(.16,1,.3,1); /* substitui o spring JS da referência */
+
+  /* Sombras multi-camada, blur ×3.8 por camada, COR derivada da superfície (dark = glow) */
+  --shadow-card:0 .6px .6px -1.25px rgba(2,6,24,.6), 0 2.3px 2.3px -2.5px rgba(2,6,24,.45), 0 10px 10px -3.75px rgba(2,6,24,.25);
+  --shadow-cta:0 .52px .31px -.75px rgba(32,72,212,.5), 0 1.57px .94px -1.5px rgba(32,72,212,.45), 0 4.15px 2.49px -2.25px rgba(32,72,212,.4), 0 13px 7.8px -3px rgba(32,72,212,.3), inset 0 1px 0 rgba(255,255,255,.18), inset 0 0 2px rgba(5,21,78,.4);
+  --shadow-float:0 .8px .8px -.8px rgba(32,72,212,.12), 0 2.4px 2.4px -1.6px rgba(32,72,212,.12), 0 6.4px 6.4px -2.4px rgba(32,72,212,.10), 0 20px 20px -3.25px rgba(32,72,212,.06);
+  --shadow-navy:0 .6px .6px -1.25px rgba(2,6,24,.7), 0 2.3px 2.3px -2.5px rgba(2,6,24,.5), 0 10px 10px -3.75px rgba(32,72,212,.25);
+
+  --gradient-cta:linear-gradient(123deg, #2048D4 -12%, #5F7ADD 89%);
+  --container:1120px;
+  --font-display:"Manrope",sans-serif;
+  --font-ui:"Inter",sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-ui);
+  font-size:var(--fs-0); font-weight:400; line-height:1.4;
+  letter-spacing:-.02em;            /* tracking negativo: regra do DNA */
+  color:var(--blue-81);             /* body NUNCA branco puro (periwinkle dos KVs) */
+  background:var(--blue-5);
+}
+h1,h2,h3{font-family:var(--font-display);color:var(--blue-97)}
+h1{font-size:var(--fs-9);font-weight:800;line-height:1.1;letter-spacing:-.05em}
+h2{font-size:var(--fs-5);font-weight:800;line-height:1.1;letter-spacing:-.04em}
+h3{font-size:var(--fs-1);font-weight:700;line-height:1.2;letter-spacing:-.03em}
+img{display:block}
+a{text-decoration:none;color:inherit;transition:color var(--t-fast)}
+
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--sp-20)}
+section{padding:var(--sp-90) 0}
+
+/* Eyebrow + headline: assinatura estrutural — TODA seção */
+.eyebrow{
+  font-family:var(--font-display);
+  font-size:var(--fs--1); font-weight:700; letter-spacing:0;
+  text-transform:uppercase; color:var(--blue-60);
+  margin-bottom:var(--sp-12);
+}
+.section-head{max-width:746px;margin-bottom:var(--sp-40)}
+.section-head p{margin-top:var(--sp-16);font-size:var(--fs-1);line-height:1.4}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+
+/* Entradas: reveal com ease-out longo (equivalente CSS do spring) */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease-entrance),transform .7s var(--ease-entrance)}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* Botões — CTA primário é o ÚNICO elemento com gradiente por viewport */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:var(--fs-0);font-weight:700;letter-spacing:-.02em;
+  padding:var(--sp-16) var(--sp-32); border-radius:var(--r-1); /* canto reto suave: assinatura dos KVs */
+  border:none;cursor:pointer;
+  transition:transform var(--t-fast),box-shadow var(--t-def),background-color var(--t-fast);
+}
+.btn-primary{background:var(--gradient-cta);color:var(--white);box-shadow:var(--shadow-cta);border:1px solid rgba(130,153,237,.45)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--blue-48);color:var(--white);border:1px solid rgba(130,153,237,.45)}
+.btn-solid:hover{background:var(--blue-35)}
+.btn-ghost{background:transparent;color:var(--blue-72);border:1px solid var(--line)}
+.btn-ghost:hover{background:var(--glass)}
+
+/* Fotos — humanização integrada ao sistema: radius r-2, borda do sistema, wash navy p/ unificar tons */
+.photo{position:relative;border-radius:var(--r-2);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-card)}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.05) brightness(.9)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg, rgba(5,21,78,.38), rgba(6,9,28,.12));pointer-events:none}
+.split-head{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-40);align-items:center;margin-bottom:var(--sp-40)}
+.split-head .section-head{margin-bottom:0}
+.split-head .photo{aspect-ratio:4/3}
+
+/* ===== Header ===== */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(6,9,28,.82);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;padding-top:var(--sp-12);padding-bottom:var(--sp-12)}
+.brand{display:flex;align-items:center;gap:var(--sp-12)}
+.brand img{height:40px;width:auto}
+.brand small{font-size:var(--fs--1);color:var(--blue-81);letter-spacing:-.01em}
+.nav-links{display:flex;align-items:center;gap:var(--sp-24)}
+.nav-links a{font-size:var(--fs--1);font-weight:500;color:var(--blue-81)}
+.nav-links a:hover{color:var(--blue-97)}
+.site-header .btn{padding:var(--sp-8) var(--sp-20);font-size:var(--fs--1)}
+
+/* ===== Hero ===== */
+.hero{padding:var(--sp-90) 0 var(--sp-60);text-align:center;background:
+  linear-gradient(180deg, rgba(6,9,28,.5), rgba(6,9,28,.85) 92%), /* overlay >=40%: texto nunca direto sobre imagem */
+  url(assets/BGs.jpg) center/cover no-repeat,
+  var(--blue-5);}
+.hero-badges{display:flex;justify-content:center;gap:var(--sp-12);margin-bottom:var(--sp-24)}
+.chip{
+  display:inline-flex;align-items:center;gap:var(--sp-8);
+  font-size:var(--fs--1);font-weight:600;color:var(--blue-60);
+  background:rgba(11,18,40,.7);border:1px solid var(--line);
+  padding:var(--sp-8) var(--sp-16);border-radius:var(--r-1); /* canto dos badges dos KVs */
+}
+.hero h1{max-width:900px;margin:0 auto var(--sp-24)}
+.hero .lead{max-width:600px;margin:0 auto var(--sp-32);font-size:var(--fs-1);line-height:1.4;color:var(--blue-72)}
+.hero .micro{margin-top:var(--sp-16);font-size:var(--fs--1);color:var(--blue-65)}
+
+/* ===== Milestones (proof strip) ===== */
+.milestones{background:var(--blue-10);padding:var(--sp-60) 0}
+.milestones .intro{max-width:746px;margin:0 auto var(--sp-40);text-align:center;font-size:var(--fs-1)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24)}
+.stat{background:var(--glass);border:1px solid var(--line);border-radius:var(--r-2);padding:var(--sp-32);text-align:center;box-shadow:var(--shadow-card)}
+.stat strong{display:block;font-family:var(--font-display);font-size:var(--fs-7);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--blue-97)}
+.stat span{font-size:var(--fs-0);color:var(--blue-72)}
+
+/* ===== Problema ===== */
+.sintomas{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24)}
+.sintoma{
+  background:var(--glass);border:1px solid var(--line);border-radius:var(--r-2);
+  padding:var(--sp-24);box-shadow:var(--shadow-card);
+  display:flex;gap:var(--sp-12);align-items:flex-start;
+  font-weight:500;color:var(--blue-92);line-height:1.4;
+  transition:transform var(--t-def),box-shadow var(--t-def);
+}
+.sintoma:hover{transform:translateY(-4px);box-shadow:var(--shadow-float)}
+.sintoma .dot{flex:none;width:8px;height:8px;border-radius:var(--r-pill);background:var(--danger);margin-top:var(--sp-8)}
+.problema-fecho{max-width:746px;margin:var(--sp-40) auto 0;text-align:center;font-size:var(--fs-1);line-height:1.4}
+
+/* ===== Diferencial ===== */
+#diferencial{background:var(--blue-10)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-24)}
+.compare-card{border-radius:var(--r-3);padding:var(--sp-40)}
+.compare-card .tag{display:inline-block;font-family:var(--font-display);font-size:var(--fs--1);font-weight:700;text-transform:uppercase;letter-spacing:0;padding:var(--sp-4) var(--sp-12);border-radius:var(--r-pill);margin-bottom:var(--sp-16)}
+.compare-card h3{font-size:var(--fs-2);margin-bottom:var(--sp-20)}
+.compare-card ul{list-style:none;display:grid;gap:var(--sp-12)}
+.compare-card li{display:flex;gap:var(--sp-12);line-height:1.4}
+.compare-card li b{flex:none;font-weight:600}
+.card-trad{background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow-card)}
+.card-trad .tag{background:rgba(11,18,40,.7);color:var(--blue-72);border:1px solid var(--line)}
+.card-trad h3{color:var(--blue-92)}
+.card-trad li{color:var(--blue-81)}
+.card-trad li b{color:var(--danger)}
+.card-now{background:linear-gradient(160deg, var(--blue-22), var(--blue-16));border:1px solid rgba(130,153,237,.4);box-shadow:var(--shadow-navy)}
+.card-now .tag{background:var(--blue-48);color:var(--white)}
+.card-now h3{color:var(--blue-97)}
+.card-now li{color:var(--blue-92)}
+.card-now li b{color:var(--ok)}
+.diferencial-fecho{max-width:746px;margin:var(--sp-40) auto 0;text-align:center;font-size:var(--fs-1)}
+
+/* ===== Processo ===== */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-24)}
+.step{background:var(--glass);border:1px solid var(--line);border-radius:var(--r-2);padding:var(--sp-24);box-shadow:var(--shadow-card)}
+.step .num{font-family:var(--font-display);font-size:var(--fs-5);font-weight:800;letter-spacing:-.04em;color:var(--blue-35);line-height:1.1}
+.step h3{margin:var(--sp-12) 0 var(--sp-8)}
+.step p{font-size:var(--fs-0);line-height:1.4}
+
+/* ===== Personas ===== */
+#publico{background:var(--blue-10)}
+.personas{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24)}
+.persona{background:var(--glass);border:1px solid var(--line);border-radius:var(--r-2);padding:0;overflow:hidden;box-shadow:var(--shadow-card)}
+.persona .photo{height:200px;border:none;border-radius:0;box-shadow:none}
+.persona-body{padding:var(--sp-32)}
+.persona h3{margin-bottom:var(--sp-12)}
+.persona p{line-height:1.4}
+
+/* ===== Depoimentos ===== */
+#depoimentos.parallax{background:
+  linear-gradient(180deg, rgba(6,9,28,.9), rgba(6,9,28,.84)), /* overlay pesado: foto vira textura humana */
+  url(assets/img/especialista-contato-bg.jpg) center 30%/cover no-repeat;
+  background-attachment:scroll,fixed} /* fixed = parallax; iOS degrada p/ scroll normal */
+.quotes-carousel{position:relative}
+.quotes{display:flex;gap:var(--sp-24);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:var(--sp-4) var(--sp-4) var(--sp-12);margin:calc(var(--sp-4)*-1);-ms-overflow-style:none;scrollbar-width:none}
+.quotes::-webkit-scrollbar{display:none}
+.quote{flex:0 0 calc(40% - var(--sp-16));scroll-snap-align:start;
+  /* glass quase nulo: véu mínimo + borda tênue, sem fill sólido */
+  background:rgba(255,255,255,.012);border:1px solid rgba(112,135,219,.13);border-radius:var(--r-2);
+  padding:var(--sp-32);box-shadow:none;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  display:flex;flex-direction:column;gap:var(--sp-20)}
+.quote blockquote{font-size:var(--fs-0);line-height:1.4;color:var(--blue-81)}
+.quote footer{display:flex;align-items:center;gap:var(--sp-12);margin-top:auto}
+.avatar{flex:none;width:44px;height:44px;border-radius:var(--r-pill);background:var(--blue-22);color:var(--blue-92);font-family:var(--font-display);font-weight:700;font-size:var(--fs--1);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.avatar-pair{flex:none;display:flex}
+.avatar-pair .avatar+.avatar{margin-left:-12px;border:2px solid var(--blue-16)}
+.quote cite{font-style:normal;font-size:var(--fs--1);color:var(--blue-72)}
+.quote cite b{display:block;color:var(--blue-97);font-weight:600}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:var(--sp-20);margin-top:var(--sp-32)}
+.car-btn{flex:none;width:44px;height:44px;border-radius:var(--r-pill);background:var(--glass);border:1px solid var(--line);color:var(--blue-92);font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s,opacity .2s}
+.car-btn:hover:not(:disabled){background:rgba(255,255,255,.07);border-color:var(--blue-48);color:var(--blue-97)}
+.car-btn:disabled{opacity:.3;cursor:default}
+.carousel-dots{display:flex;align-items:center;gap:var(--sp-8)}
+.dot-btn{width:8px;height:8px;padding:0;border:none;border-radius:var(--r-pill);background:var(--blue-35);opacity:.4;cursor:pointer;transition:opacity .25s,width .25s,background .25s}
+.dot-btn.active{opacity:1;width:24px;background:var(--blue-60)}
+
+/* ===== Diagnóstico / Form ===== */
+#diagnostico{background:
+  linear-gradient(180deg, rgba(6,9,28,.8), rgba(11,18,40,.88)),
+  url(assets/BG-section.png) center/cover no-repeat,
+  var(--blue-10)}
+.diagnostico-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-40);align-items:start}
+.garantias{display:grid;gap:var(--sp-20);margin-top:var(--sp-32)}
+.garantia{display:flex;gap:var(--sp-12);align-items:flex-start}
+.garantia .check{flex:none;width:24px;height:24px;border-radius:var(--r-pill);background:rgba(32,72,212,.22);color:var(--blue-60);font-weight:700;font-size:var(--fs--1);display:flex;align-items:center;justify-content:center}
+.garantia b{display:block;color:var(--blue-97);font-weight:600}
+.garantia span{font-size:var(--fs--1);line-height:1.4}
+.form-card{background:linear-gradient(160deg, rgba(17,34,95,.5), rgba(5,21,78,.35));border:1px solid var(--line);border-radius:var(--r-3);padding:var(--sp-40);box-shadow:var(--shadow-float);backdrop-filter:blur(8px)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-16)}
+.field{display:grid;gap:var(--sp-4)}
+.field.full{grid-column:1/-1}
+.field label{font-size:var(--fs--1);font-weight:500;color:var(--blue-92)}
+.field input,.field select,.field textarea{
+  font-family:var(--font-ui);font-size:var(--fs-0);color:var(--blue-97);
+  padding:var(--sp-12) var(--sp-16);border-radius:var(--r-1);
+  border:1px solid var(--line);background:rgba(6,9,28,.6);
+  transition:border-color var(--t-fast),box-shadow var(--t-fast);
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue-48);box-shadow:0 0 0 2px rgba(32,72,212,.35)}
+.field input::placeholder,.field textarea::placeholder{color:var(--blue-65)}
+.field select{color-scheme:dark}
+.form-card .btn{width:100%;margin-top:var(--sp-24)}
+.form-card .micro{margin-top:var(--sp-16);font-size:var(--fs--1);color:var(--blue-65);text-align:center;line-height:1.4}
+
+/* ===== FAQ ===== */
+.faq-list{max-width:746px;margin:0 auto;display:grid;gap:var(--sp-12)}
+.faq-item{background:var(--glass);border:1px solid var(--line);border-radius:var(--r-1);box-shadow:var(--shadow-card);overflow:hidden}
+.faq-question{
+  width:100%;display:flex;justify-content:space-between;align-items:center;gap:var(--sp-16);
+  font-family:var(--font-display);font-size:var(--fs-0);font-weight:700;letter-spacing:-.02em;
+  color:var(--blue-92);background:none;border:none;cursor:pointer;text-align:left;
+  padding:var(--sp-20) var(--sp-24);
+}
+.faq-question .icon{flex:none;color:var(--blue-60);transition:transform var(--t-def);font-weight:600}
+.faq-item.open .icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height var(--t-def) ease}
+.faq-answer p{padding:0 var(--sp-24) var(--sp-20);line-height:1.4}
+.faq-item.open .faq-answer{max-height:400px}
+
+/* ===== CTA final ===== */
+.final-cta{background:
+  linear-gradient(180deg, rgba(6,9,28,.75), rgba(6,9,28,.62)),
+  url(assets/BG-herov-strip.png) center/cover no-repeat, /* faixa da arte recortada sem o lettering embutido */
+  var(--blue-10);text-align:center}
+.final-cta h2{font-size:var(--fs-7);max-width:900px;margin:0 auto var(--sp-32);letter-spacing:-.05em}
+
+/* ===== Footer ===== */
+.site-footer{background:#04060F;border-top:1px solid var(--line);padding:var(--sp-40) 0}
+.site-footer .container{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-24)}
+.site-footer img{height:32px;width:auto}
+.site-footer p{font-size:var(--fs--1);color:var(--blue-65)}
+
+/* ===== WhatsApp float ===== */
+.whats-float{
+  position:fixed;right:var(--sp-24);bottom:var(--sp-24);z-index:60;
+  width:56px;height:56px;border-radius:var(--r-pill);
+  background:var(--whats);display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow-float);transition:transform var(--t-fast);
+}
+.whats-float:hover{transform:translateY(-2px)}
+.whats-float svg{width:28px;height:28px;fill:var(--white)}
+
+/* ===== Reflow: headline cai 1 degrau por breakpoint (regra do DNA) ===== */
+@media (max-width:1199px){
+  h1{font-size:var(--fs-6)}
+  h2{font-size:var(--fs-4)}
+  .final-cta h2{font-size:var(--fs-5)}
+  .stat strong{font-size:var(--fs-6)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .sintomas{grid-template-columns:repeat(2,1fr)}
+  .quote{flex-basis:calc(58% - var(--sp-12))}
+}
+@media (max-width:809px){
+  section{padding:var(--sp-60) 0}
+  h1{font-size:var(--fs-4)}
+  h2{font-size:var(--fs-4)}
+  .final-cta h2{font-size:var(--fs-4)}
+  .nav-links{display:none}
+  .brand small{display:none}
+  .site-header .btn{padding:var(--sp-8) var(--sp-16)}
+  .hero-badges{flex-wrap:wrap}
+  .stats,.steps,.sintomas,.personas,.compare,.diagnostico-grid,.split-head{grid-template-columns:1fr}
+  .quote{flex-basis:88%}
+  .form-grid{grid-template-columns:1fr}
+  .stat strong{font-size:var(--fs-6)}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="#">
+      <img src="assets/consulting-now-logo-white.svg" alt="Consulting Now">
+      <small>Gestão, processos e lucro</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#problema">Sintomas</a>
+      <a href="#diferencial">Diferencial</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-solid" href="#diagnostico">Solicitar diagnóstico</a>
+  </div>
+</header>
+
+<!-- 1. PROMESSA -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badges reveal">
+      <span class="chip">32 anos</span>
+      <span class="chip">700+ empresas reestruturadas</span>
+    </div>
+    <h1 class="reveal">Cresceu no faturamento. Agora precisa voltar a lucrar.</h1>
+    <p class="lead reveal">A Consulting Now ajuda a sua empresa a criar uma nova rotina de gestão: encontra gargalos de caixa, margem, processos e gestão, e acompanha a implantação com o seu time.</p>
+    <div class="reveal">
+      <a class="btn btn-primary" href="#diagnostico">Quero meu diagnóstico</a>
+      <p class="micro">Sem compromisso. Um consultor entra em contato em até 24h.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROVA QUANTITATIVA -->
+<section class="milestones">
+  <div class="container">
+    <p class="intro reveal">Metodologia construída para empresas que já têm estrutura, equipe e desafios na operação, mas precisam transformar crescimento em margem, caixa e rotina de gestão.</p>
+    <div class="stats">
+      <div class="stat reveal"><strong>32 anos</strong><span>de método aplicado</span></div>
+      <div class="stat reveal"><strong>700+</strong><span>empresas reestruturadas</span></div>
+      <div class="stat reveal"><strong>100+</strong><span>consultores no Brasil</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. DOR -->
+<section id="problema">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">O problema</p>
+      <h2>Sinais de que a estrutura está travando o lucro.</h2>
+      <p>Não são conquistas. São alertas de que a operação cresceu mais rápido que a gestão.</p>
+    </div>
+    <div class="sintomas">
+      <div class="sintoma reveal"><span class="dot"></span>O faturamento subiu, mas o caixa segue apertado.</div>
+      <div class="sintoma reveal"><span class="dot"></span>Desconto de títulos e juros viraram rotina.</div>
+      <div class="sintoma reveal"><span class="dot"></span>O aumento de custos não chega ao preço final.</div>
+      <div class="sintoma reveal"><span class="dot"></span>A margem real por produto ou serviço não está clara.</div>
+      <div class="sintoma reveal"><span class="dot"></span>Decisões importantes ainda dependem do dono.</div>
+      <div class="sintoma reveal"><span class="dot"></span>A empresa quer expandir, mas a base operacional não sustenta.</div>
+    </div>
+    <p class="problema-fecho reveal">Quando esses sinais aparecem juntos, o problema raramente é esforço. É estrutura. E estrutura se corrige com diagnóstico, planejamento, projeto exequível e acompanhamento dentro da operação.</p>
+  </div>
+</section>
+
+<!-- 4. MECANISMO-CONTRASTE -->
+<section id="diferencial">
+  <div class="container">
+    <div class="split-head">
+      <div class="section-head reveal">
+        <p class="eyebrow">Diferencial</p>
+        <h2>Não é um relatório. É implantação assistida.</h2>
+        <p>A Consulting Now não olha a empresa de fora para entregar uma lista de problemas. O consultor ajuda a criar uma nova rotina de gestão, prioriza o que gera impacto e acompanha o avanço com o seu time.</p>
+      </div>
+      <div class="photo reveal"><img src="assets/img/consultor-analise.jpg" alt="Consultor analisando os números da operação" loading="lazy"></div>
+    </div>
+    <div class="compare">
+      <div class="compare-card card-trad reveal">
+        <span class="tag">Consultoria tradicional</span>
+        <h3>Diagnóstico distante, implantação solta.</h3>
+        <ul>
+          <li><b>×</b> Análise pontual, muitas vezes remota.</li>
+          <li><b>×</b> Relatório longo, sem prioridade clara.</li>
+          <li><b>×</b> Execução fica nas mãos do empresário.</li>
+          <li><b>×</b> Baixa previsibilidade de retorno.</li>
+        </ul>
+      </div>
+      <div class="compare-card card-now reveal">
+        <span class="tag">Consulting Now</span>
+        <h3>Presença semanal para corrigir com o time.</h3>
+        <ul>
+          <li><b>✓</b> Consultor na empresa 1 dia por semana.</li>
+          <li><b>✓</b> Plano de ação priorizado por impacto.</li>
+          <li><b>✓</b> Corresponsabilidade na implantação.</li>
+          <li><b>✓</b> Método de 32 anos aplicado ao seu setor.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="diferencial-fecho reveal">É consultoria com corresponsabilidade: diagnóstico, planejamento, projeto exequível e presença semanal para fazer a mudança sair do papel.</p>
+  </div>
+</section>
+
+<!-- 5. MECANISMO -->
+<section id="processo">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Como funciona</p>
+      <h2>Do diagnóstico ao plano de ação, sem parar a operação.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="num">01</div>
+        <h3>Conversa inicial</h3>
+        <p>Um especialista entende o momento da empresa e valida se a consultoria faz sentido para o seu cenário.</p>
+      </div>
+      <div class="step reveal">
+        <div class="num">02</div>
+        <h3>Diagnóstico empresarial</h3>
+        <p>O consultor vai até a empresa por 6 dias, distribuídos em 3 semanas, para analisar financeiro, operação, vendas e gestão.</p>
+      </div>
+      <div class="step reveal">
+        <div class="num">03</div>
+        <h3>Plano de ação</h3>
+        <p>Você recebe gargalos, oportunidades e prioridades com payback projetado, baseados na realidade da operação.</p>
+      </div>
+      <div class="step reveal">
+        <div class="num">04</div>
+        <h3>Projeto contínuo</h3>
+        <p>Para quem quer seguir, o consultor acompanha a implantação 1 dia por semana junto com o seu time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PERSONAS -->
+<section id="publico">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Para quem é</p>
+      <h2>Para empresários que já cresceram, mas precisam de gestão para sustentar o próximo passo.</h2>
+    </div>
+    <div class="personas">
+      <div class="persona reveal">
+        <div class="photo"><img src="assets/img/empresario-margem.jpg" alt="Empresário conferindo números no laptop" loading="lazy"></div>
+        <div class="persona-body">
+          <h3>O empresário que cresce mas não lucra</h3>
+          <p>Fatura bem. A margem encolheu. Não sabe exatamente para onde o dinheiro está indo. Quer clareza antes de tomar qualquer decisão grande.</p>
+        </div>
+      </div>
+      <div class="persona reveal">
+        <div class="photo"><img src="assets/img/empresario-operacional.jpg" alt="Dono de empresa trabalhando sozinho até tarde" loading="lazy"></div>
+        <div class="persona-body">
+          <h3>O dono que não consegue sair do operacional</h3>
+          <p>Está preso no dia a dia. O time não decide sem perguntar. Quer montar a estrutura que permita delegar, e tirar férias sem o celular na mão.</p>
+        </div>
+      </div>
+      <div class="persona reveal">
+        <div class="photo"><img src="assets/img/empresario-visao.jpg" alt="Empresário confiante planejando o próximo passo" loading="lazy"></div>
+        <div class="persona-body">
+          <h3>O empresário que quer crescer, mas a base não aguenta</h3>
+          <p>Quer abrir nova unidade ou escalar. Sabe que precisa organizar o que já existe antes de colocar mais um tijolo em cima.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. PROVA SOCIAL -->
+<section id="depoimentos" class="parallax">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Prova social</p>
+      <h2>Veja o que nossos clientes estão dizendo.</h2>
+    </div>
+    <div class="quotes-carousel reveal" data-carousel>
+      <div class="quotes" data-track>
+        <div class="quote">
+          <blockquote>“A Consulting Now foi fundamental na reorganização da nossa empresa. Além das soluções assertivas que alavancaram nossas vendas, agora temos uma visão mais ampla e efetiva do nosso negócio para tomada de decisões.”</blockquote>
+          <footer><span class="avatar-pair"><span class="avatar"><img src="assets/img/depoimentos/yago-baptista.jpg" alt="Yago Baptista" loading="lazy"></span><span class="avatar"><img src="assets/img/depoimentos/altair-baptista.jpg" alt="Altair Baptista" loading="lazy"></span></span><cite><b>Yago e Altair Baptista</b>Sócios · Alper Embalagens</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“Hoje, ao ver o quanto crescemos nesse ano de consultoria, só podemos dizer obrigado por nos mostrarem a direção e o caminho para esta conquista.”</blockquote>
+          <footer><span class="avatar"><img src="assets/img/depoimentos/josenildo-francelino.jpg" alt="Josenildo Francelino" loading="lazy"></span><cite><b>Josenildo Francelino</b>Sócio Diretor · Confiance Empilhadeiras</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“O diagnóstico nos deu uma visão independente e organizada sobre a estrutura financeira, operacional e comercial na nossa empresa. Bem como, nos apresentou o caminho das ações necessárias para aumentar a lucratividade.”</blockquote>
+          <footer><span class="avatar-pair"><span class="avatar"><img src="assets/img/depoimentos/fabio-franco.jpg" alt="Fabio Franco" loading="lazy"></span><span class="avatar"><img src="assets/img/depoimentos/elisa-franco.jpg" alt="Elisa Franco" loading="lazy"></span></span><cite><b>Fabio e Elisa Franco</b>Diretores · EB Alumínio</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“O diagnóstico apresentado pela Consulting Now, utilizando técnicas modernas de avaliação, foi importante ao detectar pontos positivos e oportunidades de melhoria para continuar no desenvolvimento da nossa empresa para as próximas décadas.”</blockquote>
+          <footer><span class="avatar"><img src="assets/img/depoimentos/nelson-okadi.jpg" alt="Nelson Tetsuo Okadi" loading="lazy"></span><cite><b>Nelson Tetsuo Okadi</b>Diretor Técnico · Enequipa</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“O diagnóstico da Consulting Now promoveu o entendimento da necessidade de reorganização de capital humano e da implantação de processos para que a empresa funcionasse de forma organizada, fornecendo melhor atendimento aos clientes, melhor ambiente de trabalho e lucratividade.”</blockquote>
+          <footer><span class="avatar"><img src="assets/img/depoimentos/leticia-tirtaprawita.jpg" alt="Leticia Tirtaprawita" loading="lazy"></span><cite><b>Leticia Tirtaprawita</b>Diretora · Ferragens Mundial</cite></footer>
+        </div>
+        <div class="quote">
+          <blockquote>“A Consulting Now nos apresentou uma proposta de diagnóstico seguida de um plano para ajuste e correção das rotas. Ficamos muito felizes com o resultado e recomendamos a todos que necessitem de uma atualização nas modernas práticas de gestão.”</blockquote>
+          <footer><span class="avatar"><img src="assets/img/depoimentos/ricardo-martins.jpg" alt="Ricardo Martins" loading="lazy"></span><cite><b>Ricardo Martins</b>Diretor · Grampofix</cite></footer>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="car-btn" type="button" data-prev aria-label="Depoimento anterior">‹</button>
+        <div class="carousel-dots" data-dots role="tablist" aria-label="Selecionar depoimento"></div>
+        <button class="car-btn" type="button" data-next aria-label="Próximo depoimento">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. OFERTA / CONVERSÃO -->
+<section id="diagnostico">
+  <div class="container">
+    <div class="diagnostico-grid">
+      <div class="reveal">
+        <p class="eyebrow">Conversa inicial gratuita</p>
+        <h2>Comece pelo diagnóstico.</h2>
+        <p style="margin-top:var(--sp-16);font-size:var(--fs-1)">Um especialista entra em contato em até 24 horas para entender o cenário e indicar o próximo passo.</p>
+        <div class="garantias">
+          <div class="garantia"><span class="check">✓</span><span><b>Sem compromisso</b>Conversa inicial gratuita, sem obrigação de contratar.</span></div>
+          <div class="garantia"><span class="check">✓</span><span><b>Diagnóstico em 6 dias</b>6 dias distribuídos em 3 semanas. Sem parar a operação.</span></div>
+          <div class="garantia"><span class="check">✓</span><span><b>Consultor vai até você</b>Presencial. Na sua cidade. No seu horário.</span></div>
+          <div class="garantia"><span class="check">✓</span><span><b>32 anos de resultado</b>Metodologia aplicada em 700+ empresas no Brasil.</span></div>
+        </div>
+      </div>
+      <form class="form-card reveal">
+        <div class="form-grid">
+          <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" type="text" placeholder="Seu nome" required></div>
+          <div class="field"><label for="whatsapp">WhatsApp com DDD *</label><input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" placeholder="(00) 00000-0000" required></div>
+          <div class="field"><label for="cidade">Cidade *</label><input id="cidade" name="cidade" type="text" placeholder="Cidade/UF" required></div>
+          <div class="field"><label for="funcionarios">Número de funcionários *</label>
+            <select id="funcionarios" name="funcionarios" required>
+              <option value="">Selecione</option><option>15-30</option><option>31-60</option><option>61-150</option><option>151+</option>
+            </select>
+          </div>
+          <div class="field"><label for="setor">Setor da empresa *</label>
+            <select id="setor" name="setor" required>
+              <option value="">Selecione</option><option>Indústria</option><option>Comércio</option><option>Serviços</option><option>Outros</option>
+            </select>
+          </div>
+          <div class="field"><label for="desafio">Principal desafio hoje</label>
+            <select id="desafio" name="desafio">
+              <option value="">Selecione</option><option>Lucratividade</option><option>Vendas</option><option>Custos</option><option>Gestão</option><option>Expansão</option><option>Outros</option>
+            </select>
+          </div>
+          <div class="field full"><label for="mensagem">Mensagem</label><textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte um pouco do cenário (opcional)"></textarea></div>
+        </div>
+        <button class="btn btn-primary" type="submit">Quero meu diagnóstico</button>
+        <p class="micro">Ao enviar, você concorda em receber contato da Consulting Now pelo número informado. Sem spam. Retorno em até 24 horas.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 9. OBJEÇÕES -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">FAQ</p>
+      <h2>Perguntas que os empresários fazem antes de contratar.</h2>
+      <p>Respostas diretas para remover as principais objeções antes da conversa inicial.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">Quanto tempo leva o diagnóstico?<span class="icon">+</span></button>
+        <div class="faq-answer"><p>6 dias de imersão distribuídos em 3 semanas. O consultor agenda junto com você para não interferir na operação. Nada para.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">Preciso preparar alguma coisa antes de contratar?<span class="icon">+</span></button>
+        <div class="faq-answer"><p>Não. O consultor chega, entende o contexto e conduz o processo. A única coisa que pedimos é abertura para que ele converse com o seu time.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">Como funciona se minha empresa está em outra cidade?<span class="icon">+</span></button>
+        <div class="faq-answer"><p>A Consulting Now opera por franquia regional. O franqueado responsável pela sua área é quem atende presencialmente.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">O consultor conhece o meu setor?<span class="icon">+</span></button>
+        <div class="faq-answer"><p>Em 32 anos já atendemos os mais diversos segmentos da indústria, comércio e serviço, tais como redes de clínicas, supermercados, fábricas moveleiras, construtoras e franquias entre muitos outros. Atuamos com consultoria de gestão e processos, que se aplica a todo e qualquer tipo de empresa — diferente de uma consultoria por especialidade, que atua em nichos específicos. Se a empresa tem 15 ou mais funcionários e desafios de gestão, o método se adapta.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">O que acontece depois do diagnóstico?<span class="icon">+</span></button>
+        <div class="faq-answer"><p>Apresentamos os gargalos identificados, as oportunidades mapeadas e um plano com payback projetado. A partir daí, você decide se quer continuar com o projeto de consultoria contínua, sem obrigação.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">Como é definido o investimento?<span class="icon">+</span></button>
+        <div class="faq-answer"><p>O valor é personalizado baseado em algumas premissas, como carga horária definida, o porte e a complexidade da empresa. Definimos juntos depois de entender o momento do seu negócio.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FECHAMENTO -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="reveal">Seu negócio pode crescer com lucro, processo e previsibilidade.</h2>
+    <a class="btn btn-primary reveal" href="#diagnostico">Solicitar diagnóstico</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <img src="assets/consulting-now-logo-white.svg" alt="Consulting Now">
+    <p>Consulting Now · Gestão, processos e lucro</p>
+  </div>
+</footer>
+
+<a class="whats-float" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+document.querySelectorAll('.faq-question').forEach((button) => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach((faq) => {
+      faq.classList.remove('open');
+      faq.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      button.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+  const track = carousel.querySelector('[data-track]');
+  const cards = Array.from(track.children);
+  const dotsBox = carousel.querySelector('[data-dots]');
+  const prev = carousel.querySelector('[data-prev]');
+  const next = carousel.querySelector('[data-next]');
+  if (!track || !cards.length) return;
+
+  const step = () => cards[0].offsetWidth + parseFloat(getComputedStyle(track).columnGap || 0);
+  const activeIndex = () => Math.round(track.scrollLeft / step());
+
+  const dots = cards.map((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'dot-btn';
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', `Depoimento ${i + 1}`);
+    dot.addEventListener('click', () => track.scrollTo({ left: i * step(), behavior: 'smooth' }));
+    dotsBox.appendChild(dot);
+    return dot;
+  });
+
+  const sync = () => {
+    const i = activeIndex();
+    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === i));
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+  };
+
+  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+
+  let raf;
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(sync);
+  });
+  window.addEventListener('resize', sync);
+  sync();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design DNA — Consulting Now | Guia do Sistema</title>
+<meta name="description" content="O sistema generativo de design da Consulting Now: regras, escalas, restrições e assets. Tudo que um designer precisa para criar dentro do sistema.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Este guia é renderizado PELO próprio sistema que documenta. */
+:root{
+  --blue-5:#06091C; --blue-10:#0B1228; --blue-16:#05154E; --blue-22:#11225F;
+  --blue-35:#1F3893; --blue-48:#2048D4; --blue-60:#4D6CF0; --blue-65:#7087DB;
+  --blue-72:#8299ED; --blue-81:#ADBBF0; --blue-92:#DBE2FA; --blue-97:#F2F5FE;
+  --white:#fff; --ok:#18e071; --danger:#ff7a72;
+  --line:rgba(112,135,219,.28); --glass:rgba(255,255,255,.045);
+  --fs--1:13px; --fs-0:16px; --fs-1:20px; --fs-2:24px; --fs-4:32px; --fs-5:40px; --fs-6:48px; --fs-7:56px; --fs-9:80px;
+  --sp-4:4px; --sp-8:8px; --sp-12:12px; --sp-16:16px; --sp-20:20px; --sp-24:24px; --sp-32:32px; --sp-40:40px; --sp-60:60px; --sp-90:90px;
+  --r-1:10px; --r-2:20px; --r-3:30px; --r-pill:999px;
+  --t-fast:150ms; --t-def:200ms; --ease-entrance:cubic-bezier(.16,1,.3,1);
+  --shadow-card:0 .6px .6px -1.25px rgba(2,6,24,.6), 0 2.3px 2.3px -2.5px rgba(2,6,24,.45), 0 10px 10px -3.75px rgba(2,6,24,.25);
+  --shadow-cta:0 .52px .31px -.75px rgba(32,72,212,.5), 0 1.57px .94px -1.5px rgba(32,72,212,.45), 0 4.15px 2.49px -2.25px rgba(32,72,212,.4), 0 13px 7.8px -3px rgba(32,72,212,.3), inset 0 1px 0 rgba(255,255,255,.18);
+  --shadow-float:0 .8px .8px -.8px rgba(32,72,212,.12), 0 2.4px 2.4px -1.6px rgba(32,72,212,.12), 0 6.4px 6.4px -2.4px rgba(32,72,212,.10), 0 20px 20px -3.25px rgba(32,72,212,.06);
+  --gradient-cta:linear-gradient(123deg, #2048D4 -12%, #5F7ADD 89%);
+  --container:1120px; --font-display:"Manrope",sans-serif; --font-ui:"Inter",sans-serif; --font-mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-ui);font-size:var(--fs-0);line-height:1.4;letter-spacing:-.02em;color:var(--blue-81);background:var(--blue-5)}
+h1,h2,h3{font-family:var(--font-display);color:var(--blue-97)}
+h1{font-size:var(--fs-9);font-weight:800;line-height:1.1;letter-spacing:-.05em}
+h2{font-size:var(--fs-5);font-weight:800;line-height:1.1;letter-spacing:-.04em}
+h3{font-size:var(--fs-1);font-weight:700;line-height:1.2;letter-spacing:-.03em}
+a{color:var(--blue-72);text-decoration:none;transition:color var(--t-fast)}
+a:hover{color:var(--blue-97)}
+code,.mono{font-family:var(--font-mono);font-size:var(--fs--1);letter-spacing:0}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--sp-20)}
+section{padding:var(--sp-90) 0;border-bottom:1px solid rgba(112,135,219,.12)}
+.eyebrow{font-family:var(--font-display);font-size:var(--fs--1);font-weight:700;letter-spacing:0;text-transform:uppercase;color:var(--blue-60);margin-bottom:var(--sp-12)}
+.section-head{max-width:746px;margin-bottom:var(--sp-40)}
+.section-head p{margin-top:var(--sp-16);font-size:var(--fs-1)}
+.note{font-size:var(--fs--1);color:var(--blue-65);margin-top:var(--sp-16);line-height:1.4}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-24)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24)}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-24)}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:var(--r-2);padding:var(--sp-24);box-shadow:var(--shadow-card)}
+.card h3{margin-bottom:var(--sp-8)}
+.card p{font-size:var(--fs--1);line-height:1.4}
+
+/* capa */
+.cover{min-height:min(88vh,880px);display:flex;align-items:center;text-align:center;border-bottom:1px solid var(--line);background:
+  linear-gradient(180deg, rgba(6,9,28,.5), rgba(6,9,28,.88) 92%),
+  url(assets/BGs.jpg) center/cover no-repeat, var(--blue-5)}
+.cover .container{padding-top:var(--sp-60);padding-bottom:var(--sp-60)}
+.cover img{height:64px;margin:0 auto var(--sp-32)}
+.cover h1{max-width:900px;margin:0 auto var(--sp-24)}
+.cover p{max-width:600px;margin:0 auto;font-size:var(--fs-1);color:var(--blue-72)}
+.cover .chip{display:inline-flex;gap:var(--sp-8);margin-top:var(--sp-32);font-size:var(--fs--1);font-weight:600;color:var(--blue-60);background:rgba(11,18,40,.7);border:1px solid var(--line);padding:var(--sp-8) var(--sp-16);border-radius:var(--r-1)}
+
+/* swatches */
+.ramp{display:grid;grid-template-columns:repeat(12,1fr);border-radius:var(--r-1);overflow:hidden;border:1px solid var(--line)}
+.ramp div{height:96px;display:flex;align-items:flex-end;padding:var(--sp-8);font-family:var(--font-mono);font-size:10px;letter-spacing:0}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-16);margin-top:var(--sp-24)}
+.swatch{border:1px solid var(--line);border-radius:var(--r-1);overflow:hidden}
+.swatch .chipcolor{height:72px}
+.swatch .meta{padding:var(--sp-12);background:var(--blue-10)}
+.swatch .meta b{display:block;color:var(--blue-92);font-size:var(--fs--1);font-weight:600}
+.swatch .meta span{font-family:var(--font-mono);font-size:11px;color:var(--blue-65)}
+
+/* type specimen */
+.spec{display:grid;gap:var(--sp-16)}
+.spec-row{display:grid;grid-template-columns:160px 1fr;gap:var(--sp-24);align-items:baseline;border-bottom:1px solid rgba(112,135,219,.12);padding-bottom:var(--sp-16)}
+.spec-row .mono{color:var(--blue-65)}
+.spec-row .sample{font-family:var(--font-display);color:var(--blue-97);font-weight:800;line-height:1.1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+
+/* spacing bars */
+.bars{display:grid;gap:var(--sp-12)}
+.bar-row{display:grid;grid-template-columns:120px 1fr;gap:var(--sp-24);align-items:center}
+.bar{height:20px;background:var(--gradient-cta);border-radius:var(--r-1) }
+
+/* radius demo */
+.radius-demo{display:flex;gap:var(--sp-24);align-items:flex-end;flex-wrap:wrap}
+.radius-demo .r{width:120px;height:96px;background:var(--blue-22);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--blue-72)}
+
+/* shadow demo */
+.shadow-demo{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24)}
+.shadow-demo .s{height:120px;border-radius:var(--r-2);background:var(--blue-10);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--blue-72)}
+
+/* botões demo */
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:var(--fs-0);font-weight:700;letter-spacing:-.02em;padding:var(--sp-16) var(--sp-32);border-radius:var(--r-1);border:none;cursor:pointer;transition:transform var(--t-fast),box-shadow var(--t-def),background-color var(--t-fast)}
+.btn-primary{background:var(--gradient-cta);color:var(--white);box-shadow:var(--shadow-cta);border:1px solid rgba(130,153,237,.45)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--blue-48);color:var(--white);border:1px solid rgba(130,153,237,.45)}
+.btn-solid:hover{background:var(--blue-35)}
+.btn-ghost{background:transparent;color:var(--blue-72);border:1px solid var(--line)}
+.btn-ghost:hover{background:var(--glass)}
+
+/* fotos demo */
+.photo{position:relative;border-radius:var(--r-2);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-card)}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.05) brightness(.9)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg, rgba(5,21,78,.38), rgba(6,9,28,.12));pointer-events:none}
+.photo.raw img{filter:none}
+.photo.raw::after{display:none}
+.photo-cap{margin-top:var(--sp-8);font-size:var(--fs--1);color:var(--blue-65);text-align:center}
+
+/* restrições */
+.locks{display:grid;gap:var(--sp-12);counter-reset:lock}
+.lock{display:flex;gap:var(--sp-16);align-items:flex-start;background:var(--glass);border:1px solid var(--line);border-radius:var(--r-1);padding:var(--sp-16) var(--sp-20)}
+.lock::before{counter-increment:lock;content:counter(lock,decimal-leading-zero);font-family:var(--font-display);font-weight:800;color:var(--blue-35);font-size:var(--fs-1);line-height:1.4}
+.lock b{color:var(--blue-92);font-weight:600}
+.lock p{font-size:var(--fs--1);margin-top:var(--sp-4)}
+
+/* gramática */
+.flow{display:flex;flex-wrap:wrap;gap:var(--sp-8)}
+.flow span{font-family:var(--font-mono);font-size:11px;color:var(--blue-92);background:var(--blue-16);border:1px solid var(--line);padding:var(--sp-8) var(--sp-12);border-radius:var(--r-1)}
+.flow em{color:var(--blue-35);align-self:center;font-style:normal}
+
+/* tabela */
+table{width:100%;border-collapse:collapse;font-size:var(--fs--1)}
+th{font-family:var(--font-display);text-align:left;color:var(--blue-92);font-weight:700;padding:var(--sp-12);border-bottom:1px solid var(--line)}
+td{padding:var(--sp-12);border-bottom:1px solid rgba(112,135,219,.12);vertical-align:top}
+td code{color:var(--blue-72)}
+
+footer{padding:var(--sp-40) 0;text-align:center;font-size:var(--fs--1);color:var(--blue-65)}
+
+@media (max-width:1199px){
+  h1{font-size:var(--fs-6)} h2{font-size:var(--fs-4)}
+  .grid-4,.shadow-demo{grid-template-columns:repeat(2,1fr)}
+  .swatches{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:809px){
+  section{padding:var(--sp-60) 0}
+  h1{font-size:var(--fs-4)} h2{font-size:var(--fs-4)}
+  .grid-2,.grid-3,.grid-4,.shadow-demo,.swatches{grid-template-columns:1fr}
+  .ramp{grid-template-columns:repeat(4,1fr)}
+  .spec-row{grid-template-columns:1fr;gap:var(--sp-4)}
+}
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<header class="cover">
+  <div class="container">
+    <img src="assets/consulting-now-logo-white.svg" alt="Consulting Now">
+    <h1>Design DNA</h1>
+    <p>O sistema generativo de design da Consulting Now. Não é uma paleta com fontes: é um conjunto de <b style="color:var(--blue-92)">regras matemáticas e restrições</b> que gera qualquer página, seção ou peça nova com coerência — inclusive o que ainda não existe.</p>
+    <span class="chip">v1 · junho 2026 · base matemática extraída de referência + marca + KVs de campanha</span>
+  </div>
+</header>
+
+<!-- FILOSOFIA -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Filosofia</p>
+      <h2>Copiamos regras, nunca valores.</h2>
+      <p>Todo valor neste sistema deriva de uma função. Quando você precisar de um tamanho, espaço ou cor que não está documentado, <b style="color:var(--blue-92)">não invente um número: derive da escala</b>. Se a escala não cobre o caso, o sistema evolui (novo degrau documentado) — nunca um valor solto no arquivo.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card"><h3>1 · A matemática</h3><p>Escalas extraídas por engenharia reversa de uma referência premium (SaaS): razão tipográfica, grid de espaçamento, progressão de radius e fórmula de sombras. O esqueleto invisível da qualidade.</p></div>
+      <div class="card"><h3>2 · A marca</h3><p>As duas cores da Consulting Now — <code>#2048D4</code> e <code>#05154E</code> — vivem no mesmo matiz (227°). O ramp inteiro do sistema é gerado a partir delas, variando só a luminosidade.</p></div>
+      <div class="card"><h3>3 · A campanha</h3><p>Os KVs definiram o tema dark, o glow radial azul, os cantos suaves (radius 10, não pill) e as bordas finas azuladas. Anúncio e LP falam a mesma língua visual.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COR -->
+<section id="cor">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Cor</p>
+      <h2>Um matiz, doze luminosidades.</h2>
+      <p>Tudo nasce do matiz <b style="color:var(--blue-92)">227°</b>. Os degraus são nomeados pela luminosidade (L do HSL): <code>blue-5</code> é quase preto, <code>blue-97</code> é quase branco. A regra que dá o ar premium: <b style="color:var(--blue-92)">a saturação acompanha a função</b> — fundos profundos e dessaturados, ações vivas e saturadas.</p>
+    </div>
+    <div class="ramp">
+      <div style="background:#06091C;color:#8299ED">5</div>
+      <div style="background:#0B1228;color:#8299ED">10</div>
+      <div style="background:#05154E;color:#8299ED">16</div>
+      <div style="background:#11225F;color:#ADBBF0">22</div>
+      <div style="background:#1F3893;color:#DBE2FA">35</div>
+      <div style="background:#2048D4;color:#fff">48</div>
+      <div style="background:#4D6CF0;color:#fff">60</div>
+      <div style="background:#7087DB;color:#06091C">65</div>
+      <div style="background:#8299ED;color:#06091C">72</div>
+      <div style="background:#ADBBF0;color:#06091C">81</div>
+      <div style="background:#DBE2FA;color:#06091C">92</div>
+      <div style="background:#F2F5FE;color:#06091C">97</div>
+    </div>
+    <div class="swatches">
+      <div class="swatch"><div class="chipcolor" style="background:#06091C"></div><div class="meta"><b>blue-5 · fundo base</b><span>#06091C</span></div></div>
+      <div class="swatch"><div class="chipcolor" style="background:#0B1228"></div><div class="meta"><b>blue-10 · fundo alternado</b><span>#0B1228</span></div></div>
+      <div class="swatch"><div class="chipcolor" style="background:#05154E"></div><div class="meta"><b>blue-16 · navy da marca</b><span>#05154E · superfícies</span></div></div>
+      <div class="swatch"><div class="chipcolor" style="background:#11225F"></div><div class="meta"><b>blue-22 · superfície elevada</b><span>#11225F</span></div></div>
+      <div class="swatch"><div class="chipcolor" style="background:#2048D4"></div><div class="meta"><b>blue-48 · azul da marca</b><span>#2048D4 · ação, CTAs</span></div></div>
+      <div class="swatch"><div class="chipcolor" style="background:#4D6CF0"></div><div class="meta"><b>blue-60 · acento vivo</b><span>#4D6CF0 · eyebrows, ícones</span></div></div>
+      <div class="swatch"><div class="chipcolor" style="background:#ADBBF0"></div><div class="meta"><b>blue-81 · texto corrido</b><span>#ADBBF0 · body</span></div></div>
+      <div class="swatch"><div class="chipcolor" style="background:#F2F5FE"></div><div class="meta"><b>blue-97 · ink</b><span>#F2F5FE · headlines</span></div></div>
+    </div>
+    <p class="note">Proporção por viewport: ~65% fundos profundos (L5–22) · ~25% texto e superfícies claras (L65–97) · ~10% azul vivo (L48–60). Micro-acentos funcionais fora do ramp: <code style="color:#18e071">#18E071</code> (checks) e <code style="color:#ff7a72">#FF7A72</code> (negativos) — nunca em fundo ou texto corrido.<br>Por que o body não é branco e o eyebrow não é #2048D4 puro: contraste. <code>#ADBBF0</code> lê confortável sem estourar; <code>#2048D4</code> em texto de 13px sobre L5 cai pra 2.8:1 (ilegível) — por isso existe o degrau <code>blue-60</code>, que mantém ~4.4:1.</p>
+  </div>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section id="tipografia">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Tipografia</p>
+      <h2>tamanho(n) = 16 × 1.2ⁿ</h2>
+      <p>Duas famílias, nunca uma terceira: <b style="color:var(--blue-92)">Manrope</b> (display — títulos, números, botões) e <b style="color:var(--blue-92)">Inter</b> (UI — corpo, labels, formulários). Os tamanhos saem da escala e arredondam pra par.</p>
+    </div>
+    <div class="spec">
+      <div class="spec-row"><span class="mono">n=-1 · 13px · labels</span><span class="sample" style="font-size:13px">EYEBROW UPPERCASE · CAPTIONS · MICROCOPY</span></div>
+      <div class="spec-row"><span class="mono">n=0 · 16px · body</span><span class="sample" style="font-size:16px;font-weight:400;font-family:var(--font-ui);color:var(--blue-81)">Texto corrido em Inter 400. A base de tudo.</span></div>
+      <div class="spec-row"><span class="mono">n=1 · 20px · lead</span><span class="sample" style="font-size:20px;font-weight:600">Subtítulos e leads em destaque</span></div>
+      <div class="spec-row"><span class="mono">n=2 · 24px · h4</span><span class="sample" style="font-size:24px">Títulos de card e valores</span></div>
+      <div class="spec-row"><span class="mono">n=4 · 32px · h3/h2 mobile</span><span class="sample" style="font-size:32px">Headline mobile</span></div>
+      <div class="spec-row"><span class="mono">n=5 · 40px · h2</span><span class="sample" style="font-size:40px">Headline de seção</span></div>
+      <div class="spec-row"><span class="mono">n=7 · 56px · display</span><span class="sample" style="font-size:56px">CTA final</span></div>
+      <div class="spec-row"><span class="mono">n=9 · 80px · hero</span><span class="sample" style="font-size:80px">Hero</span></div>
+    </div>
+    <p class="note">Regras acopladas ao tamanho — <b style="color:var(--blue-92)">tracking sempre negativo e aperta conforme cresce</b>: body −0.02em → h2 −0.04em → hero −0.05em (única exceção: eyebrows uppercase em 0). Line-height cai conforme cresce: UI 1em · body 1.3–1.4 · headings 1.1–1.2. Pesos: corpo 400–500, ênfase 600–700, display 800 (nunca 800 em texto corrido). Reflow: a headline desce 1 degrau por breakpoint (hero 80 → 48 → 32).</p>
+  </div>
+</section>
+
+<!-- ESPAÇAMENTO / RADIUS / SOMBRA -->
+<section id="estrutura">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Estrutura</p>
+      <h2>Grid de 4px, radius de 10 em 10, sombra em camadas.</h2>
+    </div>
+    <div class="grid-2" style="align-items:start">
+      <div>
+        <h3 style="margin-bottom:var(--sp-16)">Espaçamento — múltiplos de 4</h3>
+        <div class="bars">
+          <div class="bar-row"><span class="mono">4 · micro</span><div class="bar" style="width:4px"></div></div>
+          <div class="bar-row"><span class="mono">8 · ícone+texto</span><div class="bar" style="width:8px"></div></div>
+          <div class="bar-row"><span class="mono">12 · interno</span><div class="bar" style="width:12px"></div></div>
+          <div class="bar-row"><span class="mono">16 · interno</span><div class="bar" style="width:16px"></div></div>
+          <div class="bar-row"><span class="mono">24 · entre elementos</span><div class="bar" style="width:24px"></div></div>
+          <div class="bar-row"><span class="mono">32 · entre blocos</span><div class="bar" style="width:32px"></div></div>
+          <div class="bar-row"><span class="mono">40 · respiro</span><div class="bar" style="width:40px"></div></div>
+          <div class="bar-row"><span class="mono">60–90 · seções</span><div class="bar" style="width:90px"></div></div>
+        </div>
+        <p class="note">Progressão: +4 até 24, depois +8. Padding interno de card nunca maior que o gap entre cards. Container de conteúdo: 1120px · prose: 746px · breakpoints: 809 / 1199.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:var(--sp-16)">Radius — linear +10</h3>
+        <div class="radius-demo">
+          <div class="r" style="border-radius:10px">10 · botões, inputs, FAQ</div>
+          <div class="r" style="border-radius:20px">20 · cards</div>
+          <div class="r" style="border-radius:30px">30 · destaque</div>
+        </div>
+        <p class="note">Decisão dos KVs: CTAs e badges usam radius 10 (canto reto suave), não pill. Pill (999) sobrevive só em avatares e nos círculos de check. Nenhuma superfície elevada abaixo de 10.</p>
+        <h3 style="margin:var(--sp-32) 0 var(--sp-16)">Sombras — cor da superfície</h3>
+        <div class="shadow-demo">
+          <div class="s" style="box-shadow:var(--shadow-card)">card · profundidade</div>
+          <div class="s" style="box-shadow:var(--shadow-cta)">cta · glow azul</div>
+          <div class="s" style="box-shadow:var(--shadow-float)">float · glow suave</div>
+        </div>
+        <p class="note">Sempre 3+ camadas com blur ×3.8 por camada e opacidade decrescente. A cor da sombra deriva da superfície: card escuro → sombra quase-preta azulada · botão azul → glow azul. Nunca sombra única dura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTES -->
+<section id="componentes">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Componentes</p>
+      <h2>As peças, já resolvidas.</h2>
+    </div>
+    <div class="grid-2" style="align-items:start">
+      <div class="card" style="padding:var(--sp-32)">
+        <h3 style="margin-bottom:var(--sp-16)">Botões</h3>
+        <div style="display:flex;gap:var(--sp-16);flex-wrap:wrap;align-items:center">
+          <button class="btn btn-primary">Primário — gradiente</button>
+          <button class="btn btn-solid">Secundário — sólido</button>
+          <button class="btn btn-ghost">Ghost</button>
+        </div>
+        <p class="note">O gradiente <code>123deg, #2048D4 → #5F7ADD</code> é EXCLUSIVO do CTA primário — no máximo 1 por viewport. Header e ações secundárias usam o sólido. Hover: 150–200ms, só cor/transform.</p>
+      </div>
+      <div class="card" style="padding:var(--sp-32)">
+        <h3 style="margin-bottom:var(--sp-16)">Superfícies</h3>
+        <p style="font-size:var(--fs-0);line-height:1.4">Glass: <code>rgba(255,255,255,.045)</code> + borda <code>rgba(112,135,219,.28)</code> — o card padrão sobre qualquer fundo do ramp. Card de destaque (vencedor de comparativo): gradiente <code>blue-22 → blue-16</code> com borda luminosa. Chips/badges: fundo <code>rgba(11,18,40,.7)</code>, borda fina, texto blue-60 — idêntico aos KVs.</p>
+        <p class="note">Padrão estrutural de TODA seção: eyebrow (13px uppercase, blue-60) + headline (h2 40px ink). Sem exceção — é a assinatura mais forte do sistema.</p>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:var(--sp-24);align-items:start">
+      <div>
+        <div class="photo raw" style="aspect-ratio:16/9"><img src="assets/img/consultor-analise.jpg" alt="Foto sem tratamento"></div>
+        <p class="photo-cap">Foto crua — tom quente briga com o tema</p>
+      </div>
+      <div>
+        <div class="photo" style="aspect-ratio:16/9"><img src="assets/img/consultor-analise.jpg" alt="Foto com tratamento do sistema"></div>
+        <p class="photo-cap">Componente <code>.photo</code> — wash navy + dessaturação integra qualquer foto</p>
+      </div>
+    </div>
+    <p class="note">Receita do tratamento: <code>filter: saturate(.82) contrast(1.05) brightness(.9)</code> + overlay <code>linear-gradient(160deg, rgba(5,21,78,.38), rgba(6,9,28,.12))</code> + radius 20 + borda e sombra do sistema. Para foto como FUNDO de seção: overlay ≥ 80% (a foto vira textura) e opcionalmente <code>background-attachment:fixed</code> para parallax (iOS degrada gracioso).</p>
+  </div>
+</section>
+
+<!-- O CADEADO -->
+<section id="cadeado">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">O cadeado</p>
+      <h2>O que este sistema NUNCA faz.</h2>
+      <p>As restrições valem mais que a paleta. É isso que mantém a coerência quando a squad criar o que ainda não existe.</p>
+    </div>
+    <div class="locks">
+      <div class="lock"><div><b>Nunca texto branco ou preto puro.</b><p>Headlines são <code>#F2F5FE</code>, corpo é <code>#ADBBF0</code>. Troque por <code>#FFF</code>/<code>#333</code> e o site vira genérico na hora.</p></div></div>
+      <div class="lock"><div><b>Nunca tracking positivo</b><p>— exceto eyebrow uppercase (0em). Todo o resto é negativo, apertando com o tamanho.</p></div></div>
+      <div class="lock"><div><b>Nunca sombra única dura.</b><p>Sempre stack de 3+ camadas, na cor da superfície.</p></div></div>
+      <div class="lock"><div><b>Nunca cor fora do matiz 227° em área grande.</b><p>Verde e vermelho só em micro-acentos funcionais (✓/×). Jamais em fundo, título ou botão.</p></div></div>
+      <div class="lock"><div><b>Nunca gradiente fora do CTA primário.</b><p>Máximo 1 por viewport. É o que faz ele converter.</p></div></div>
+      <div class="lock"><div><b>Nunca radius menor que 10 em superfície elevada.</b><p>E nunca pill em CTA — os KVs mandam no canto.</p></div></div>
+      <div class="lock"><div><b>Nunca weight 800 em texto corrido.</b><p>Display é display. Corpo vive em 400–500.</p></div></div>
+      <div class="lock"><div><b>Nunca seção sem eyebrow + headline.</b><p>O padrão estrutural não tem exceção.</p></div></div>
+      <div class="lock"><div><b>Nunca texto direto sobre foto.</b><p>Overlay mínimo de 40% — como fundo de seção, 80%+.</p></div></div>
+      <div class="lock"><div><b>Nunca prova social consecutiva.</b><p>Ela aparece 3× na página (números, depoimentos, garantias), sempre intercalada entre argumentos.</p></div></div>
+      <div class="lock"><div><b>Nunca uma terceira fonte.</b><p>Manrope + Inter. Fim.</p></div></div>
+      <div class="lock"><div><b>Nunca valor solto.</b><p>Se o número não está numa escala deste guia, ou você deriva, ou documenta um degrau novo. Inventar é proibido.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GRAMÁTICA -->
+<section id="gramatica">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Gramática narrativa</p>
+      <h2>A ordem das dobras é argumento, não estética.</h2>
+      <p>Cada seção tem um papel de venda. A lógica: alternar argumento e prova; humanizar antes de pedir contato; fechar objeções depois de mostrar a oferta.</p>
+    </div>
+    <div class="flow">
+      <span>promessa (hero)</span><em>→</em>
+      <span>prova numérica</span><em>→</em>
+      <span>dor (sintomas)</span><em>→</em>
+      <span>mecanismo-contraste (× vs ✓)</span><em>→</em>
+      <span>mecanismo (4 passos)</span><em>→</em>
+      <span>personas</span><em>→</em>
+      <span>prova social (parallax)</span><em>→</em>
+      <span>oferta + form</span><em>→</em>
+      <span>objeções (FAQ)</span><em>→</em>
+      <span>fechamento</span>
+    </div>
+    <p class="note">Densidade: hero enxuto (4 elementos), seções de argumento densas (6–8), fechamento mínimo (headline + 1 CTA). O fechamento é a única outra dobra com tipografia de display além do hero.</p>
+  </div>
+</section>
+
+<!-- ASSETS -->
+<section id="assets">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Assets</p>
+      <h2>O que existe e pra que serve.</h2>
+    </div>
+    <table>
+      <tr><th>Arquivo</th><th>Uso</th><th>Regra</th></tr>
+      <tr><td><code>consulting-now-logo-white.svg</code></td><td>Logo no tema dark (header, footer, capa)</td><td>Monocromático branco; altura 32–64px</td></tr>
+      <tr><td><code>consulting-now-logo-navy.svg</code></td><td>Logo para fundos claros (docs, peças impressas)</td><td>Mesmo traçado em #05154E</td></tr>
+      <tr><td><code>BGs.jpg</code></td><td>Fundo do hero — curvas finas + glow lateral</td><td>Overlay 50→85% de cima pra baixo</td></tr>
+      <tr><td><code>BG-section.png</code></td><td>Fundo de seção de conversão (form)</td><td>Overlay 80–88%</td></tr>
+      <tr><td><code>BG-herov-strip.png</code></td><td>Fundo do CTA final (faixa da arte sem lettering)</td><td>Overlay 62–75%; nunca usar a versão completa atrás de texto (tem lettering embutido)</td></tr>
+      <tr><td><code>img/consultor-analise.jpg</code></td><td>Diferencial — rosto da implantação assistida</td><td rowspan="4">Sempre via componente <code>.photo</code> (wash navy); 1200px, lazy</td></tr>
+      <tr><td><code>img/empresario-margem.jpg</code></td><td>Persona 1 — cresce mas não lucra</td></tr>
+      <tr><td><code>img/empresario-operacional.jpg</code></td><td>Persona 2 — preso no operacional</td></tr>
+      <tr><td><code>img/empresario-visao.jpg</code></td><td>Persona 3 — quer crescer</td></tr>
+      <tr><td><code>img/especialista-contato-bg.jpg</code></td><td>Parallax dos depoimentos (1920px)</td><td>Overlay 84–90%; attachment fixed</td></tr>
+    </table>
+    <p class="note">Fontes da verdade do sistema: <code>Design/dna/rescale/design-dna.json</code> (schema matemático extraído da referência) · <code>Design/dna/rescale/RULES.md</code> (regras em linguagem natural) · <code>Design/dna/vercel-lp-base/BASE.md</code> (decisões e histórico) · <code>LPs/rescale-dna/index.html</code> (implementação viva — os tokens no <code>:root</code> são o estado atual).</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Design DNA · Consulting Now · junho 2026 — este guia é renderizado pelo próprio sistema que documenta: cada cor, tamanho e sombra desta página obedece às regras acima.</p>
+  </div>
+</footer>
+
+</body>
+</html>
