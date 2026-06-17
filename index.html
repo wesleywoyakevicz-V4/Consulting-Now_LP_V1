@@ -665,7 +665,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
 const contactForm = document.querySelector('.form-card');
-const leadWebhookUrl = 'https://automation.opscap.collieassociados.com/webhook-test/72fb5389-4515-457f-8449-835046b27c0f';
+const leadWebhookUrl = 'https://automation.opscap.collieassociados.com/webhook/72fb5389-4515-457f-8449-835046b27c0f';
 contactForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
