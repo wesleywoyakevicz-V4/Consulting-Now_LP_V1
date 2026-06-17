@@ -690,7 +690,7 @@ contactForm?.addEventListener('submit', async (event) => {
   const message = `Olá, gostaria de falar com um representante da Consulting Now.\n\n${details}`;
 
   const whatsappUrl = `https://wa.me/5511934686321?text=${encodeURIComponent(message)}`;
-  const whatsappWindow = window.open('', '_blank', 'noopener');
+  const whatsappWindow = window.open(whatsappUrl, '_blank');
 
   try {
     await fetch(leadWebhookUrl, {
@@ -708,9 +708,7 @@ contactForm?.addEventListener('submit', async (event) => {
     console.warn('Falha ao enviar lead para o webhook.', error);
   }
 
-  if (whatsappWindow) {
-    whatsappWindow.location.href = whatsappUrl;
-  } else {
+  if (!whatsappWindow) {
     window.open(whatsappUrl, '_blank', 'noopener');
   }
 });
