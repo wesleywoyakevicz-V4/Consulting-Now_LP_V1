@@ -560,6 +560,7 @@ section{padding:var(--sp-90) 0}
         <div class="form-grid">
           <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" type="text" placeholder="Seu nome" required></div>
           <div class="field"><label for="whatsapp">WhatsApp com DDD *</label><input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" placeholder="(00) 00000-0000" required></div>
+          <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" inputmode="email" placeholder="seu@email.com" autocomplete="email" required></div>
           <div class="field"><label for="cidade">Cidade *</label><input id="cidade" name="cidade" type="text" placeholder="Cidade/UF" required></div>
           <div class="field"><label for="funcionarios">Número de funcionários *</label>
             <select id="funcionarios" name="funcionarios" required>
@@ -662,6 +663,7 @@ contactForm?.addEventListener('submit', async (event) => {
   const labels = {
     nome: 'Nome',
     whatsapp: 'WhatsApp',
+    email: 'Email',
     cidade: 'Cidade',
     funcionarios: 'Número de funcionários',
     setor: 'Setor',
