@@ -708,7 +708,7 @@ contactForm?.addEventListener('submit', async (event) => {
     console.warn('Falha ao enviar lead para o webhook.', error);
   }
 
-  window.location.href = 'obrigado.html';
+  window.top.location.href = 'https://lpconsultoria.cnfranquia.com.br/obrigado';
 });
 
 document.querySelectorAll('.faq-question').forEach((button) => {
