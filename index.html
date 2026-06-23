@@ -688,12 +688,19 @@ contactForm?.addEventListener('submit', async (event) => {
   const whatsappUrl = `https://wa.me/5511934686321?text=${encodeURIComponent(message)}`;
   const whatsappWindow = window.open(whatsappUrl, '_blank');
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const utms = {};
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_referrer','referrer','gclientid','gclid','fbclid','ttad_name','ttad_id'].forEach(key => {
+    if (urlParams.get(key)) utms[key] = urlParams.get(key);
+  });
+
   try {
     await fetch(leadWebhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         ...payload,
+        ...utms,
         origem: 'Landing Page Consulting Now',
         pagina: window.location.href,
         enviadoEm: new Date().toISOString()
