@@ -572,6 +572,11 @@ section{padding:var(--sp-90) 0}
               <option value="">Selecione</option><option>Indústria</option><option>Comércio</option><option>Serviços</option><option>Outros</option>
             </select>
           </div>
+          <div class="field"><label for="faturamento">Qual &eacute; o faturamento mensal da empresa? *</label>
+            <select id="faturamento" name="faturamento" required>
+              <option value="">Escolha uma faixa</option><option>At&eacute; R$ 99 mil</option><option>R$ 100 mil a R$ 199 mil</option><option>R$ 200 mil a R$ 499 mil</option><option>R$ 500 mil a R$ 999 mil</option><option>R$ 1 milh&atilde;o ou mais</option>
+            </select>
+          </div>
           <div class="field"><label for="desafio">Principal desafio hoje</label>
             <select id="desafio" name="desafio">
               <option value="">Selecione</option><option>Lucratividade</option><option>Vendas</option><option>Custos</option><option>Gestão</option><option>Expansão</option><option>Outros</option>
@@ -667,6 +672,7 @@ contactForm?.addEventListener('submit', async (event) => {
     cidade: 'Cidade',
     funcionarios: 'Número de funcionários',
     setor: 'Setor',
+    faturamento: 'Faturamento mensal',
     desafio: 'Principal desafio',
     mensagem: 'Mensagem'
   };
